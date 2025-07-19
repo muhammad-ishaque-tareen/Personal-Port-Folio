@@ -1,0 +1,218 @@
+/* ========== RESET & BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  color: #ffffff;
+  background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 50%, #000000 100%);
+  min-height: 100vh;
+}
+
+/* ========== HEADER & NAV ========== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(12px);
+  background-color: rgba(26, 26, 46, 0.8);
+  padding: 12px 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+nav ul {
+  display: flex;
+  justify-content: right;
+  list-style: none;
+  gap: 30px;
+  padding: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #00ff88;
+}
+
+/* ========== CONTACT SECTION ========== */
+.contact-section {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 70vh;
+}
+
+.container {
+  max-width: 800px;
+  padding: 40px;
+  background-color: rgba(26, 26, 26, 0.9);
+  border-radius: 15px;
+  border: 1px solid #333;
+  box-shadow: 0 8px 25px rgba(0, 255, 136, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.container h1 {
+  margin-bottom: 30px;
+  font-size: 2.8rem;
+  color: #00ff88;
+  font-weight: 700;
+}
+
+.container p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.container p strong {
+  color: #00ff88;
+}
+
+/* ========== ICON LINKS ========== */
+.icon-links {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.icon:hover {
+  transform: translateY(-5px);
+  background-color: #00ff88;
+  color: #000000;
+  border-color: #00ff88;
+  box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+}
+
+.icon.linkedin:hover {
+  background-color: #0077b5;
+  border-color: #0077b5;
+  color: #ffffff;
+}
+
+.icon.github:hover {
+  background-color: #333333;
+  border-color: #333333;
+  color: #ffffff;
+}
+
+.icon.email:hover {
+  background-color: #ea4335;
+  border-color: #ea4335;
+  color: #ffffff;
+}
+
+.icon.phone:hover {
+  background-color: #00ff88;
+  border-color: #00ff88;
+  color: #000000;
+}
+
+/* Ensure icons are visible even if Font Awesome fails */
+.icon i {
+  font-size: 1.5rem;
+  display: block;
+}
+
+/* Fallback for missing icons */
+.icon:before {
+  font-family: 'Font Awesome 6 Brands', 'Font Awesome 6 Free';
+  font-weight: 900;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background-color: #000000;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 1px solid #333333;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    margin: 0 10px;
+  }
+  
+  .container h1 {
+    font-size: 2.2rem;
+  }
+  
+  .container p {
+    font-size: 1rem;
+  }
+  
+  .icon-links {
+    gap: 20px;
+  }
+  
+  .icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-links {
+    gap: 15px;
+  }
+  
+  .icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+}
