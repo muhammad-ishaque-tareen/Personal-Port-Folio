@@ -1,26 +1,29 @@
-/* ========== BASE ========== */
+/* ===== RESET & BASE THEME ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 50%, #000000 100%);
-  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 50%, #000 100%);
+  color: #fff;
   min-height: 100vh;
 }
 
-/* ========== HEADER ========== */
+/* ===== HEADER ===== */
 header {
   position: sticky;
   top: 0;
-  z-index: 999;
   backdrop-filter: blur(12px);
-  background-color: rgba(26, 26, 46, 0.8);
+  background: rgba(26, 26, 46, 0.8);
   padding: 12px 30px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 999;
 }
 
 .nav-container {
@@ -34,7 +37,7 @@ header {
   width: 60px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid white;
+  border: 2px solid #fff;
 }
 
 nav ul {
@@ -47,7 +50,7 @@ nav ul li a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
 }
 
 nav ul li a:hover,
@@ -55,66 +58,349 @@ nav ul li a.active {
   color: #00ff88;
 }
 
-/* ========== SERVICES SECTION ========== */
-.services-section {
+/* ===== PROJECTS SECTION ===== */
+.projects-section {
   padding: 60px 20px;
   text-align: center;
+  animation: fadePage 0.7s ease-in-out;
 }
 
-.services-section h1 {
+.projects-section h1 {
   font-size: 2.8rem;
   margin-bottom: 20px;
   color: #00ff88;
+  animation: slideInFromTop 1s ease-out;
 }
 
-.services-section .intro {
+.projects-section .intro {
   font-size: 1.2rem;
-  margin-bottom: 40px;
+  margin: 0 auto 40px;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
-  color: #cccccc;
+  color: #ccc;
 }
 
-.services-grid {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.projects-grid {
   display: grid;
   gap: 30px;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   max-width: 1100px;
   margin: 0 auto;
+  padding: 20px 0;
 }
 
-.service-card {
-  background-color: #1a1a1a;
-  border: 1px solid #333333;
+/* ===== PROJECT CARD BASE ===== */
+.project-card {
+  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+  border: 1px solid #333;
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
 }
 
-.service-card:hover {
-  transform: translateY(-5px);
+/* ===== DIRECTIONAL ANIMATIONS ===== */
+.project-card.animate-from-top {
+  transform: translateY(-80px) scale(0.9);
+}
+
+.project-card.animate-from-left {
+  transform: translateX(-80px) scale(0.9);
+}
+
+.project-card.animate-from-right {
+  transform: translateX(80px) scale(0.9);
+}
+
+.project-card.animate-from-bottom {
+  transform: translateY(80px) scale(0.9);
+}
+
+/* ===== FADE-IN STATE ===== */
+.project-card.fade-in {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* ===== HOVER EFFECTS ===== */
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02) !important;
   border-color: #00ff88;
+  box-shadow: 0 15px 35px rgba(0, 255, 136, 0.2);
 }
 
-.service-card h2 {
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+.project-card:hover::before {
+  left: 100%;
+}
+
+/* ===== PROJECT CARD CONTENT ===== */
+.project-card h2 {
   color: #00ff88;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-.service-card p {
-  color: #dddddd;
+.project-card p {
+  color: #ddd;
   font-size: 1rem;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  font-weight: 300;
 }
 
-/* ========== FOOTER ========== */
+.project-card .btn {
+  background: linear-gradient(45deg, #00ff88, #00cc6a);
+  color: #1a1a1a;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+}
+
+.project-card .btn:hover {
+  background: linear-gradient(45deg, #00cc6a, #00aa55);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
+}
+
+/* ===== FALLBACK - SHOW CARDS IF JS DOESN'T LOAD ===== */
+.no-js .project-card {
+  opacity: 1;
+  transform: none;
+  animation: fallbackFadeIn 1s ease-out forwards;
+}
+
+.no-js .project-card:nth-child(1) { animation-delay: 0s; }
+.no-js .project-card:nth-child(2) { animation-delay: 0.2s; }
+.no-js .project-card:nth-child(3) { animation-delay: 0.4s; }
+.no-js .project-card:nth-child(4) { animation-delay: 0.6s; }
+
+/* ===== FOOTER ===== */
 footer {
-  background-color: #000;
+  background: linear-gradient(135deg, #000, #1a1a1a);
   color: #fff;
   text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  border-top: 1px solid #333;
+  padding: 30px 20px;
+  margin-top: 60px;
+  border-top: 2px solid #333;
+}
+
+footer p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* ===== ANIMATIONS & KEYFRAMES ===== */
+@keyframes fadePage {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fallbackFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== LOADING STATE ===== */
+.projects-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #333;
+  border-top: 3px solid #00ff88;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+  
+  .projects-section h1 {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  nav ul {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .projects-section {
+    padding: 40px 15px;
+  }
+  
+  .projects-section h1 {
+    font-size: 2rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .project-card {
+    padding: 25px 20px;
+  }
+  
+  .project-card h2 {
+    font-size: 1.4rem;
+  }
+  
+  .project-card p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 10px 15px;
+  }
+  
+  .logo {
+    height: 50px;
+    width: 50px;
+  }
+  
+  .projects-section {
+    padding: 30px 10px;
+  }
+  
+  .projects-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .project-card {
+    padding: 20px 15px;
+  }
+  
+  .project-card .btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+  
+  nav ul li a {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .project-card {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+@media (prefers-contrast: high) {
+  .project-card {
+    border: 2px solid #fff;
+  }
+  
+  .project-card .btn {
+    border: 2px solid #000;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  header {
+    position: static;
+    background: #fff;
+    color: #000;
+  }
+  
+  .project-card {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+    box-shadow: none;
+    page-break-inside: avoid;
+    margin-bottom: 20px;
+  }
+  
+  .project-card .btn {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+  }
 }

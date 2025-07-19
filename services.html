@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Services | Muhammad Ishaque</title>
   <link rel="stylesheet" href="CSS/services.css" />
+  <link rel="preload" href="JS/services.js" as="script">
 </head>
 <body>
+  <!-- ===== HEADER ===== -->
   <header>
     <div class="nav-container">
       <img src="assets/logo.jpeg" alt="Logo" class="logo" />
@@ -22,49 +24,73 @@
     </div>
   </header>
 
-  <section class="services-section">
-    <div class="container">
-      <h1>My Services</h1>
-      <p class="intro">
-        As a Full Stack Developer in training, I'm actively building real-world skills through internships and personal projects. Here are the services I currently offer:
-      </p>
+  <!-- ===== SERVICES SECTION ===== -->
+  <!-- ... (HEAD + NAVIGATION same as before) -->
 
-      <div class="services-grid">
-        <div class="service-card">
-          <h2>Frontend Development</h2>
-          <p>Responsive and interactive websites using HTML, CSS, JavaScript, React.js, and modern UI frameworks.</p>
-        </div>
+<section class="projects-section">
+  <div class="container">
+    <h1>My Services</h1>
+    <p class="intro">and personal projects. Here are the services I currently offer:</p>
+    <div class="projects-grid">
 
-        <div class="service-card">
-          <h2>Backend Development</h2>
-          <p>Robust APIs and server-side logic using Node.js, Express.js, MongoDB, and RESTful architecture.</p>
-        </div>
-
-        <div class="service-card">
-          <h2>Full Stack Web Apps</h2>
-          <p>Complete MERN stack web applications — from database design to deployment — using Git and GitHub.</p>
-        </div>
-
-        <div class="service-card">
-          <h2>Version Control</h2>
-          <p>Efficient team collaboration using Git, GitHub, and pull request workflows to manage code versions.</p>
-        </div>
-
-        <div class="service-card">
-          <h2>UI/UX Design</h2>
-          <p>Clean, user-friendly design with attention to usability, accessibility, and responsiveness.</p>
-        </div>
-
-        <div class="service-card">
-          <h2>Deployment & Hosting</h2>
-          <p>Deploying apps to platforms like Vercel, Netlify, or GitHub Pages for smooth delivery and updates.</p>
-        </div>
+      <div class="project-card">
+        <h2>Frontend Development</h2>
+        <p>Responsive and interactive websites using HTML, CSS, JavaScript, React.js, and modern UI frameworks.</p>
       </div>
-    </div>
-  </section>
 
+      <div class="project-card">
+        <h2>Backend Development</h2>
+        <p>Robust APIs and server-side logic using Node.js, Express.js, MongoDB, and RESTful architecture.</p>
+      </div>
+
+      <div class="project-card">
+        <h2>Full Stack Web Apps</h2>
+        <p>Complete MERN stack web applications — from database design to deployment — using Git and GitHub.</p>
+      </div>
+
+      <div class="project-card">
+        <h2>Version Control</h2>
+        <p>Efficient team collaboration using Git, GitHub, and pull request workflows to manage code versions.</p>
+      </div>
+
+      <div class="project-card">
+        <h2>UI/UX Design</h2>
+        <p>Clean, user-friendly design with attention to usability, accessibility, and responsiveness.</p>
+      </div>
+
+      <div class="project-card">
+        <h2>Deployment & Hosting</h2>
+        <p>Deploying apps to platforms like Vercel, Netlify, or GitHub Pages for smooth delivery and updates.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ... (FOOTER + scripts remain same) -->
+
+
+  <!-- ===== FOOTER ===== -->
   <footer>
     <p>© 2025 Muhammad Ishaque. All rights reserved.</p>
   </footer>
+
+  <!-- JS with fade animation logic -->
+  <script src="JS/services.js" defer></script>
+
+  <!-- Emergency fallback if JS doesn't load -->
+  <script>
+    setTimeout(() => {
+      if (!window.servicesJSLoaded) {
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach((card, index) => {
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'none';
+          }, index * 200);
+        });
+      }
+    }, 3000);
+  </script>
 </body>
 </html>
