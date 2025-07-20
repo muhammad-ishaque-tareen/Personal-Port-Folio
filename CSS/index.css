@@ -12,6 +12,7 @@ body {
   background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 50%, #000000 100%);
   min-height: 100vh;
 }
+
 /* === Mobile Nav Toggle === */
 .mobile-menu-toggle {
   display: none;
@@ -40,7 +41,6 @@ body {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-
 /* ========== HEADER & NAV ========== */
 header {
   position: sticky;
@@ -54,8 +54,13 @@ header {
 
 .nav-container {
   display: flex;
-   align-items: center;
+  align-items: center;
   justify-content: space-between; 
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
 /* Logo Image */
@@ -67,8 +72,25 @@ header {
   border: 2px solid white;
 }
 
+.logo-fallback {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #00ff88, #0066cc);
+}
+
+.logo-text {
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+}
+
 /* Navigation Links */
-nav ul {
+.nav-menu {
   display: flex;
   justify-content: right;
   list-style: none;
@@ -76,14 +98,18 @@ nav ul {
   padding: 10px;
 }
 
-nav ul li a {
+.nav-menu li a {
   text-decoration: none;
   color: #fff;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+.nav-menu li a:hover {
+  color: #00ff88;
+}
+
+.nav-menu li a.active {
   color: #00ff88;
 }
 
@@ -106,12 +132,12 @@ nav ul li a:hover {
 }
 
 /* Text content on the left */
-.hero-section > div:first-child {
+.hero-text {
   flex: 1;
   text-align: left;
 }
 
-.hero-section h1 {
+.hero-text h1 {
   font-size: 3.1rem;
   margin-bottom: 15px;
   color: #ffffff;
@@ -119,12 +145,41 @@ nav ul li a:hover {
   line-height: 1.2;
 }
 
-.hero-section p {
-  font-size: 1.3rem;
-  margin-bottom: 60px;
+.name {
+  color:#ffffff;
+}
+
+/* ========== HERO ROLES SLIDER ANIMATION ========== */
+.hero-text h2 {
+  font-size: 2rem;
+  margin: 20px 0 30px;
   color: #00ff88;
-  font-weight: 500;
-  margin-top: 60px;
+  height: 50px;
+  overflow: hidden;
+  position: relative;
+}
+
+.roles-wrapper {
+  display: inline-block;
+  height: 100%;
+  animation: moveUpDown 10s infinite;
+}
+
+@keyframes moveUpDown {
+  0%, 10% { transform: translateY(0%); }
+  15%, 25% { transform: translateY(-100%); }
+  30%, 40% { transform: translateY(-200%); }
+  45%, 55% { transform: translateY(-300%); }
+  60%, 70% { transform: translateY(-400%); }
+  75%, 85% { transform: translateY(-500%); }
+  90%, 100% { transform: translateY(0%); }
+}
+
+.roles-wrapper div {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
 }
 
 /* Profile photo on the right */
@@ -161,6 +216,38 @@ nav ul li a:hover {
   background-color: #00cc6a;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
+}
+
+/* ========== SCROLLING TEXT ========== */
+.scrolling-text-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-top: 30px;
+  padding: 15px 0;
+  position: relative;
+}
+
+.scrolling-text {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 1.2rem;
+  font-weight: 600;
+   color:#ffffff;
+  animation: scroll-right-to-left 15s linear infinite;
+  transform: translateX(50%);
+}
+.four-c{
+  color: #00ff88;
+}
+
+@keyframes scroll-right-to-left {
+  0% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 /* ========== PREVIEW SECTION ========== */
@@ -222,46 +309,7 @@ footer {
   color: #00ff88;
 }
 
-/* ========== RESPONSIVE DESIGN ========== */
-@media (max-width: 768px) {
-  .hero-section {
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 20px;
-  }
-  
-  .hero-content {
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .hero-section > div:first-child {
-    text-align: center;
-  }
-  
-  .hero-section h1 {
-    font-size: 2.5rem;
-  }
-  
-  .profile-photo img {
-    width: 250px;
-    height: 250px;
-  }
-  
-  nav ul {
-    flex-direction: column;
-    gap: 15px;
-  }
-}
-/* Typewriter Style */
-.hero-text h2 {
-  font-size: 1.5rem;
-  margin: 10px 0 20px;
-  color: #00ff88;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
+/* Typewriter Style - Legacy */
 .cursor {
   display: inline-block;
   background-color: #00ff88;
@@ -275,7 +323,7 @@ footer {
   50% { background-color: #00ff88; }
 }
 
-/* Buttons */
+/* Buttons - Legacy */
 .resume-btn {
   background-color: transparent;
   border: 2px solid #00ff88;
@@ -289,153 +337,7 @@ footer {
   color: #1a1a1a;
 }
 
-/* Hero layout adjustments */
-.hero-content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.hero-text { flex: 1; min-width: 280px; }
-
-@media (max-width: 768px) {
-  .hero-text h2 { font-size: 1.2rem; }
-  .resume-btn { display: block; margin: 20px auto 0; }
-}
-/* ========== HERO ROLES SLIDER ANIMATION ========== */
-.hero-text h2 {
-  font-size: 2rem;
-  margin: 20px 0 30px;
-  color: #00ff88;
-  height: 50px;
-  overflow: hidden;
-  position: relative;
-}
-
-.roles-wrapper {
-  display: inline-block;
-  height: 100%;
-  animation: moveUpDown 10s infinite;
-}
-
-@keyframes moveUpDown {
-  0%, 10% { transform: translateY(0%); }
-    15%, 25% { transform: translateY(-100%); }
-    30%, 40% { transform: translateY(-200%); }
-    45%, 55% { transform: translateY(-300%); }
-    60%, 70% { transform: translateY(-400%); }
-    75%, 85% { transform: translateY(-500%); }
-    90%, 100% { transform: translateY(0%); }
-}
-
-.roles-wrapper div {
-  height: 50px;
-  display: flex;
-  align-items: center;
-  font-size: 2rem;
-}
-
-/* Optional: Hide cursor used in typing animations */
-.cursor {
-  display: none;
-}
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: #0f0f1a;
-  color: white;
-  overflow-x: hidden;
-}
-
-/* === Header === */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.85);
-  padding: 0.5rem 1.5rem;
-  backdrop-filter: blur(8px);
-  transition: all 0.3s ease-in-out;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.logo {
-  height: 40px;
-  width: auto;
-  object-fit: contain;
-}
-
-/* Mobile Toggle Button */
-.mobile-menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  cursor: pointer;
-}
-
-.mobile-menu-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: white;
-  border-radius: 2px;
-}
-
-/* Navigation Menu */
-.nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.nav-menu a {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-menu a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0%;
-  height: 2px;
-  background-color: #00d9ff;
-  transition: width 0.3s ease;
-}
-
-.nav-menu a:hover::after {
-  width: 100%;
-}
-
-.nav-menu a:hover {
-  color: #00d9ff;
-}
-
-/* === Responsive Header for Mobile === */
+/* ========== RESPONSIVE DESIGN ========== */
 @media (max-width: 768px) {
   .mobile-menu-toggle {
     display: flex;
@@ -443,19 +345,57 @@ header {
 
   .nav-menu {
     position: fixed;
-    top: 60px;
+    top: 84px;
     right: -100%;
-    width: 200px;
+    width: 250px;
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.85);
-    padding: 1rem;
-    gap: 1rem;
+    background-color: rgba(26, 26, 46, 0.95);
+    padding: 20px;
+    gap: 15px;
     transition: right 0.3s ease;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
   }
 
   .nav-menu.active {
     right: 0;
+  }
+
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .hero-text {
+    text-align: center;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+  
+  .profile-photo img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .scrolling-text {
+    font-size: 1rem;
+  }
+
+  .resume-btn { 
+    display: block; 
+    margin: 20px auto 0; 
   }
 }
 
