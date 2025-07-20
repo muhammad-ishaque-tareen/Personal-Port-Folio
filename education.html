@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Education | Muhammad Ishaque</title>
+  <link rel="stylesheet" href="CSS/education.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo-container">
+        <img src="assets/logo.jpeg" alt="Logo" class="logo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="logo-fallback" style="display: none;">
+          <span class="logo-text">4C</span>
+        </div>
+      </div>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="education-section">
+    <div class="container">
+      <h1 class="fade-in">Education</h1>
+
+      <div class="education-card fade-in delay-1">
+        <h2>BS Information Technology</h2>
+        <p><strong>Duration:</strong> 2022 - 2026</p>
+        <p><strong>University:</strong> University of the Punjab, Pakistan</p>
+      </div>
+
+      <div class="education-card fade-in delay-2">
+        <h2>Intermediate (ICS)</h2>
+        <p><strong>Duration:</strong> 2020 - 2022</p>
+        <p><strong>Institute:</strong> Al Hijrah Residential School & College, Ziarat, Balochistan</p>
+        <p><strong>Board:</strong> FBISE, Islamabad</p>
+      </div>
+
+      <div class="education-card fade-in delay-3">
+        <h2>Matriculation (ICS)</h2>
+        <p><strong>Duration:</strong> 2018 - 2020</p>
+        <p><strong>Institute:</strong> Al Hijrah Residential School & College, Ziarat, Balochistan</p>
+        <p><strong>Board:</strong> FBISE, Islamabad</p>
+      </div>
+
+      <div class="cv-download fade-in delay-4">
+        <a href="assets/CV-Muhammad-Ishaque.pdf" class="btn" download>Download CV</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Muhammad Ishaque. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.querySelector('.nav-menu');
+
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        toggle.classList.toggle('open');
+      });
+
+      const faders = document.querySelectorAll('.fade-in');
+      const appearOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('appear');
+          observer.unobserve(entry.target);
+        });
+      }, appearOptions);
+
+      faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+      });
+    });
+  </script>
+</body>
+</html>
