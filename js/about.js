@@ -1,30 +1,27 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const fadeElements = document.querySelectorAll(".fade-in-up");
+// about.js
 
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add("visible");
-          }, i * 300); // staggered reveal
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.3,
-    }
-  );
-
-  fadeElements.forEach((el) => {
-    observer.observe(el);
-  });
-
-  // Fallback: force reveal after 3s if not visible
-  setTimeout(() => {
-    fadeElements.forEach((el) => {
-      el.classList.add("visible");
+// === Fade-in Animations for Sections ===
+const observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
     });
-  }, 3000);
+  },
+  { threshold: 0.1 }
+);
+
+document.querySelectorAll(".fade-in-up").forEach((el) => {
+  observer.observe(el);
+});
+
+// === Mobile Menu Toggle ===
+const mobileToggle = document.querySelector(".mobile-menu-toggle");
+const navMenu = document.querySelector(".nav-menu");
+
+mobileToggle.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+  mobileToggle.classList.toggle("open");
 });

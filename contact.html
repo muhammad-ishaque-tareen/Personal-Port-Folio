@@ -5,14 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Muhammad Ishaque</title>
   <link rel="stylesheet" href="CSS/contact.css" />
-  <!-- Updated Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 30px;
+      height: 30px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mobile-menu-toggle span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: #fff;
+      border-radius: 2px;
+      transition: 0.3s ease;
+    }
+
+    .mobile-menu-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .mobile-menu-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-menu-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: flex;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        position: absolute;
+        top: 100%;
+        right: 30px;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+      }
+      nav ul.open {
+        display: flex;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="nav-container">
       <img src="assets/logo.jpeg" alt="Logo" class="logo" />
       <nav>
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
@@ -44,7 +103,6 @@
         <a href="https://github.com/muhammad-ishaque-tareen" target="_blank" class="icon github" title="GitHub">
             <i class="fab fa-github"></i>
         </a>
-        <!-- You can add more social media icons here -->
         <a href="mailto:afnanhafeeztareen@gmail.com" class="icon email" title="Email">
             <i class="fas fa-envelope"></i>
         </a>
@@ -52,7 +110,6 @@
             <i class="fas fa-phone"></i>
         </a>
       </div>
-
     </div>
   </section>
 
@@ -60,15 +117,41 @@
     <p>© 2025 Muhammad Ishaque. All rights reserved.</p>
   </footer>
 
-  <!-- Fallback for Font Awesome if CDN fails -->
   <script>
-    // Check if Font Awesome loaded, if not, use fallback
-    if (!window.FontAwesome) {
-      const fallbackCSS = document.createElement('link');
-      fallbackCSS.rel = 'stylesheet';
-      fallbackCSS.href = 'https://use.fontawesome.com/releases/v6.4.0/css/all.css';
-      document.head.appendChild(fallbackCSS);
-    }
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('nav ul');
+
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    // Dynamic fade-in animation for elements
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.contact-section .container > *').forEach(el => {
+      el.classList.add('fade-init');
+      observer.observe(el);
+    });
   </script>
+  <style>
+    .fade-init {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </body>
 </html>

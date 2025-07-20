@@ -1,55 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index</title>
-    <link rel="stylesheet" href="CSS/index.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Index</title>
+  <link rel="stylesheet" href="CSS/index.css" />
 </head>
 <body>
-    <header>
-        <div class="container nav-container">
-            <img src="assets/logo.jpeg" alt="Logo" class="logo" />
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html"> Home</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
+  <header>
+    <div class="nav-container">
+      <div class="logo-container">
+        <img src="assets/logo.jpeg" alt="Logo" class="logo"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="logo-fallback" style="display: none;">
+          <span class="logo-text">4C</span>
         </div>
-    </header>
+      </div>
 
-    <main>
-        <section class="hero-section">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>I'm <span class="name">Muhammad Ishaque</span></h1>
-                    <h2>
-                        <div class="roles-wrapper">
-                            <div>Web Developer</div>
-                            <div>Front-End Engineer</div>
-                            <div>MERN Stack Developer</div>
-                            <div>JavaScript Enthusiast</div>
-                            <div>ReactJS Specialist</div>
-                            <div>Programmer</div>
-                        </div>
-                    </h2>
-                    <div class="hero-buttons" style="margin-top: 20px;">
-                        <a href="Projects.html" class="btn">View My Work</a>
-                    </div>
-                </div>
-                <div class="profile-photo">
-                    <img src="assets/my-profile.JPG" alt="My Profile" />
-                </div>
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>I'm <span class="name">Muhammad Ishaque</span></h1>
+          <h2>
+            <div class="roles-wrapper">
+              <div>Web Developer</div>
+              <div>Front-End Engineer</div>
+              <div>MERN Stack Developer</div>
+              <div>JavaScript Enthusiast</div>
+              <div>ReactJS Specialist</div>
+              <div>Programmer</div>
             </div>
-        </section>
-    </main>
+          </h2>
+          <div class="hero-buttons" style="margin-top: 20px;">
+            <a href="Projects.html" class="btn">View My Work</a>
+          </div>
+        </div>
+        <div class="profile-photo">
+          <img src="assets/my-profile.JPG" alt="My Profile" />
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <footer>
-        <p>&copy; 2025 Muhammad Ishaque, All rights reserved.</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 Muhammad Ishaque, All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Toggle mobile menu
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      const menu = document.querySelector('.nav-menu');
+      toggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
