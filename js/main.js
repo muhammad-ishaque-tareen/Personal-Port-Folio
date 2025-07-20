@@ -1,8 +1,4 @@
-// main.js
 
-const roles = ["Full Stack Developer","Programmer", "MERN Stack Intern", "Web & Mobile Enthusiast"];
-const typingSpeed = 150;
-const erasingSpeed = 80;
 const delayBetween = 2000;
 
 let roleIndex = 0;

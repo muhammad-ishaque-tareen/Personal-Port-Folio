@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects | Muhammad Ishaque</title>
   <link rel="stylesheet" href="CSS/projects.css" />
-  <!-- Preload JavaScript for faster loading -->
+
   <link rel="preload" href="JS/projects.js" as="script">
 </head>
 <body>
-  <!-- ===== HEADER ===== -->
   <header>
     <div class="nav-container">
       <img src="assets/logo.jpeg" alt="Logo" class="logo" />
@@ -30,34 +29,34 @@
     </div>
   </header>
 
-  <!-- ===== PROJECTS SECTION ===== -->
+
   <section class="projects-section">
     <div class="container">
       <h1>My Projects</h1>
       <div class="projects-grid">
 
-        <!-- 1. Weather App (will animate from top) -->
+       
         <div class="project-card">
           <h2>Weather App</h2>
           <p>A responsive web app built with Java Servlets and Weatherstack API to show real-time weather updates.</p>
           <a href="https://github.com/muhammad-ishaque-tareen/First-project" target="_blank" class="btn">View on GitHub</a>
         </div>
 
-        <!-- 2. To‑Do App (will animate from left) -->
+        
         <div class="project-card">
           <h2>To‑Do App (React)</h2>
           <p>A productivity-focused task manager built with React.js. Currently under development.</p>
           <a href="https://github.com/muhammad-ishaque-tareen/ToDoAppUsingReac-tjsx" target="_blank" class="btn">View on GitHub</a>
         </div>
 
-        <!-- 3. iPhone‑Style Android Calculator (will animate from right) -->
+        
         <div class="project-card">
           <h2>iPhone‑Style Android Calculator</h2>
           <p>Built using Java, it mimics iOS design and supports arithmetic operations.</p>
           <a href="https://github.com/muhammad-ishaque-tareen/iphone-calaculator-andriod-app" target="_blank" class="btn">View on GitHub</a>
         </div>
 
-        <!-- 4. ProCard App (will animate from bottom) -->
+       
         <div class="project-card">
           <h2>ProCard Android App</h2>
           <p>A card creation app for resumes, greetings, and proposals. More features coming soon.</p>
@@ -68,17 +67,17 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  
   <footer>
     <p>© 2025 Muhammad Ishaque. All rights reserved.</p>
   </footer>
 
-  <!-- JS with fade animation logic -->
-  <script src="JS/projects.js" defer></script>
+
+  <script src="js/projects.js" defer></script>
   
-  <!-- Fallback script in case external JS fails -->
+  
   <script>
-    // Emergency fallback if main JS doesn't load
+    
     setTimeout(() => {
       if (!window.projectsJSLoaded) {
         const cards = document.querySelectorAll('.project-card');

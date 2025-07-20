@@ -1,6 +1,4 @@
-// about.js
 
-// === Fade-in Animations for Sections ===
 const observer = new IntersectionObserver(
   (entries, observer) => {
     entries.forEach((entry) => {
@@ -17,7 +15,7 @@ document.querySelectorAll(".fade-in-up").forEach((el) => {
   observer.observe(el);
 });
 
-// === Mobile Menu Toggle ===
+
 const mobileToggle = document.querySelector(".mobile-menu-toggle");
 const navMenu = document.querySelector(".nav-menu");
 

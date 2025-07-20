@@ -1,12 +1,10 @@
-// JS/projects.js
 
-// Set flag to indicate script loaded
 window.projectsJSLoaded = true;
 
-// Remove no-js class if JavaScript is enabled
+
 document.documentElement.classList.remove('no-js');
 
-// Immediately show cards if IntersectionObserver is not supported
+
 if (!window.IntersectionObserver) {
   document.addEventListener("DOMContentLoaded", showAllCards);
 } else {
@@ -27,23 +25,23 @@ function showAllCards() {
 function initializeAnimations() {
   const projectCards = document.querySelectorAll(".project-card");
   
-  // Define animation directions for each card
+
   const animationTypes = ['animate-from-top', 'animate-from-left', 'animate-from-right', 'animate-from-bottom'];
   
-  // Add animation classes to cards
+ 
   projectCards.forEach((card, index) => {
     const animationType = animationTypes[index % animationTypes.length];
     card.classList.add(animationType);
-    card.style.transitionDelay = `${index * 0.3}s`; // Staggered entry
+    card.style.transitionDelay = `${index * 0.3}s`; 
   });
 
-  // Create intersection observer with error handling
+  
   try {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("fade-in");
-          observer.unobserve(entry.target); // Run animation once
+          observer.unobserve(entry.target);
         }
       });
     }, { 
@@ -51,12 +49,12 @@ function initializeAnimations() {
       rootMargin: "50px"
     });
 
-    // Observe each project card
+
     projectCards.forEach((card) => {
       observer.observe(card);
     });
 
-    // Fallback: Show cards after 2 seconds if animation hasn't triggered
+   
     setTimeout(() => {
       projectCards.forEach((card) => {
         if (!card.classList.contains("fade-in")) {
@@ -71,7 +69,7 @@ function initializeAnimations() {
   }
 }
 
-// Additional fallback for slower connections
+
 window.addEventListener('load', () => {
   setTimeout(() => {
     const projectCards = document.querySelectorAll(".project-card:not(.fade-in)");
@@ -86,7 +84,7 @@ window.addEventListener('load', () => {
   }, 1000);
 });
 
-// Force show cards if they're still hidden after 5 seconds
+
 setTimeout(() => {
   const hiddenCards = document.querySelectorAll(".project-card:not(.fade-in)");
   if (hiddenCards.length > 0) {

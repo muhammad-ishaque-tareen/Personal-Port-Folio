@@ -1,12 +1,10 @@
-// JS/services.js
 
-// Flag that script loaded
 window.servicesJSLoaded = true;
 
-// Remove fallback class
+
 document.documentElement.classList.remove('no-js');
 
-// Show cards immediately if no IntersectionObserver
+
 if (!window.IntersectionObserver) {
   document.addEventListener("DOMContentLoaded", showAllCards);
 } else {
